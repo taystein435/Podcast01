@@ -1,0 +1,450 @@
+extends layout
+
+block append head
+    style.
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+                    
+        body,html {
+            overflow-x: hidden;
+            text-rendering: optimizeSpeed;
+            scroll-behavior: smooth;
+            font-family: sans-serif;
+        }
+        body {
+            height: 100vh;
+            overflow-y: scroll;
+        }
+
+        
+        :root {
+            --white: #ffff;
+
+            --darkBlue: #0e041f;
+            --ash: #5e5d61;
+
+            --purple: #9c1778;
+        }
+
+
+
+        a {
+           text-decoration: none;
+        }
+
+        nav {
+            position: sticky;
+            top: 0px;
+            z-index: 3;
+            background-color: var(--darkBlue);
+            color: var(--white);
+            width: 100%;
+            height: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+        }
+
+        nav .logo {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            font-size: 2rem;
+        }
+
+        nav .logo .fa-shield-cat {
+            color: var(--purple);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            transition: 0.5s;
+            position: relative;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            background-color: var(--white);
+            bottom: -5px;
+            left: 0px;
+            transition: 0.5s;
+        }
+
+        .nav-links a:hover {
+            color: var(--purple);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links .fa-xmark {
+            display: none;
+            transition: 0.5s;
+        }
+
+        nav .fa-bars {
+            display: none;
+            font-size: 1.5rem;
+            transition: 0.5s;
+            cursor: pointer;
+        }
+
+        .nav-links a .nav-login {
+            height: 30px;
+            width: 400px;
+            background-color: var(--darkBlue);
+            color: var(--white);
+        }
+
+        @media screen and (max-width: 700px) {
+            nav {
+                padding: 10px 20px;
+            }
+
+            nav .fa-bars {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                width: 100%;
+                z-index: 10;
+                height: fit-content;
+                flex-direction: column;
+                padding: 30px;
+                top: 0px;
+                left: 0px;
+                transform: translateX(100%);
+                background-color: var(--purple);
+                transition: 0.5s;
+            }
+
+            .nav-links.active {
+                transform: translateX(0%);
+            }
+
+            .nav-links .fa-xmark {
+                display: block;
+                cursor: pointer;
+                position: fixed;
+                top: 30px;
+                right: 30px;
+                font-size: 1.5rem;
+            }
+
+            .nav-links a {
+                width: 100%;
+            }
+
+            .nav-links a:after {
+                display: none;
+            }
+        }
+
+        footer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 50px;
+            padding: 100px 50px;
+            color: var(--white);
+            background-color: var(--darkBlue);
+        }
+
+        footer section {
+            width: 20%;
+            min-width: 250px;
+        }
+
+
+        .footer-logo .footer-section-subheading {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+        }
+
+        .footer-logo i {
+            color: var(--purple);
+        }
+
+        footer section:nth-of-type(1) {
+            font-size: .8rem;
+            color: var(--white);
+            line-height: 1.7;
+        }
+        footer section:nth-of-type(2) .footer-links{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        } .footer-links a{
+            color: var(--white);
+            transition: .5s;
+            font-size: .9rem;
+        } .footer-links a:hover {
+            color: var(--purple);
+        }
+
+
+        .socials {
+            display: flex;
+            gap: 30px;
+        }
+        .socials a {
+            color: var(--white);
+            font-size: 1.2rem;
+            transform: .5s;
+        }
+        .socials a:hover {
+            transform: scale(.99);
+            color: var(--purple);
+        }
+
+
+        .footer-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-space div:nth-of-type(1) {
+            display: flex;
+            gap: 5px;
+            font-size: .9rem;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .ft-number {
+            font-size: .8rem;
+            color: var(--white);
+        }
+        .fm-mail {
+            font-size: .8rem;
+            text-decoration: underline;
+            color: var(--white);
+        }
+
+
+        .copyright {
+            text-align: center;
+            padding: 10px;
+            font-size: .8rem;
+            color: var(--white);
+            background-color: var(--ash);
+        }
+
+
+        @media screen and (max-width: 700px){
+
+            footer {
+                padding: 90px 20px;
+            }
+        }
+
+
+        header {
+            height: calc(80vh - 80px);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            background-image: url(https://images.pexels.com/photos/16773547/pexels-photo-16773547/free-photo-of-youtube-music-stream-songs-and-music-videos-app-on-the-display-of-smartphone-or-tablet.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+            margin-bottom: 30px;
+        }
+
+        .header-text h1{
+            color: var(--white);
+            width: 900px;
+            margin: 0px 0px 50px 40px;
+            line-height: 1.9;
+            padding: 50px;
+        }
+        .header-text h1 span{
+            color: var(--purple);
+        }
+
+        .main-shows h1{
+            padding: 20px;
+            text-align: center; 
+            
+        }
+        
+        .shows-container{
+            display: grid;
+            grid-template-columns: 300px 300px;
+            justify-content: center;
+            gap: 20px;
+            width: auto;
+            flex-wrap: wrap;
+            
+        }
+        
+        .shows-list{
+            display: flex;
+            background: var(--darkBlue);
+            color: var(--white);
+            gap: 10px;
+            margin: 5px;
+            border-radius: 10px;
+            width: 300px;
+            padding: 10px;
+            line-height: 1.6;
+            
+        }
+        
+        .shows-list .show-list-text{
+            padding-top: 10px;
+        }
+        .show-list-text h3{
+            color: var(--white);
+            padding-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .show-list-text p{
+            color: var(--ash);
+        }
+        
+        .shows-list .show-list-text a{
+            background-color: var(--purple);
+            color: var(--white);
+            display: block;
+            padding: 5px 5px;
+            border-radius: 30px;
+            width: 100px;
+            font-size: .9rem;
+            margin-top: 10px;
+            transition: .5s;
+        }
+        
+        .shows-list .show-list-text a:hover{
+            background-color: var(--white);
+            color: black;
+        }
+        
+        .shows-container .shows-list img{
+            width: 150px;
+            height: 150px;
+            padding-top: 10px;
+        }
+
+
+        @media (max-width: 600px) {
+            .shows-container {
+                font-size: 14px;
+                grid-template-columns: 1fr; /* Only one column on smaller screens */
+            }
+
+            .shows-list {
+                flex-direction: column; 
+                margin-left: 50px;
+            }
+
+            .shows-container .shows-list img {
+                width: 100%; /* Full width of the container */
+                height: auto; /* Maintain aspect ratio */
+            }
+        }
+                
+block content
+    body
+        nav
+            .logo
+                i.fa-solid.fa-shield-cat.fa-flip
+                | SoundScape
+            .nav-links
+                a(href='home.pug') Home
+                a(href='shows.pug') Shows
+                a(href='hosts.pug') Hosts
+                a(href='about.pug') About
+                a(href='contact.pug') Contact
+                a.nav-login(href='login.pug') Login
+                i.fa-solid.fa-xmark
+            i.fa-solid.fa-bars
+        header
+            .header-text
+                h1
+                    | Dive into a World of Stories, Insights, and Laughter Here. 
+                    span Discover Your Next Favorite Podcast!
+                    br
+        main.main-shows
+            h1 Trending Shows
+            .shows-container
+                each val in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+                    .shows-list
+                        img(src='images/pod6.webp', alt='')
+                        .show-list-text
+                            h3 Comedy Interviews
+                            p Get ready to laugh out loud with our latest comedy interview! Tune in for your dose of joy and jest!
+                            a(href='#') Listen Now
+        footer
+            section
+                .footer-logo
+                    i.fa-solid.fa-shield-cat
+                    h2 SoundScape
+                p
+                    | Stay tuned, stay inspired, and keep the conversations going with SoundScape. Connect, share, and dive deeper into the world of podcasts with us.
+            section
+                h2.footer-section-subheading Quick Links
+                .footer-links
+                    a(href='home.pug') Home
+                    a(href='shows.pug') Shows
+                    a(href='hosts.pug') Hosts
+                    a(href='about.pug') About Us
+                    a(href='login.pug') Login
+            section
+                h2.footer-section-subheading Contact Us
+                .footer-contact
+                    .footer-location.contact-space
+                        .fl-subheading
+                            i.fa-solid.fa-location-dot
+                            p Find us:
+                        iframe.gg_map(src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2486.098772821752!2d-0.2468400022055832!3d51.456342923059815!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48760ee6c0c242eb%3A0x3a5665ce81752bbf!2sUniversity%20of%20Roehampton%20London!5e0!3m2!1sen!2suk!4v1702237981400!5m2!1sen!2suk', width='130', height='80', style='border: 2px solid orangered;', allowfullscreen='', loading='lazy', referrerpolicy='no-referrer-when-downgrade')
+                    .footer-tel.contact-space
+                        .ft-subheading
+                            i.fa-solid.fa-location-dot Call us
+                    p.ft-number +44-772-181-0275
+                .footer-mail.contact-space
+                    .fm-subheading
+                    i.fa-solid.fa-envelope Email:
+                    a.fm-mail(href="#") SoundScape@gmail.com
+            section
+                h2.footer-section-subheading Follow us
+                .socials
+                a
+                    i.fa-brands.fa-facebook
+                a(href="")
+                    i.fa-brands.fa-twitter.fa-beat
+                a(href="")
+                    i.fa-brands.fa-instagram.fa-beat-fade
+                a(href="")
+                    i.fa-brands.fa-tiktok.fa-shake
+        p.copyright Copyright © 2024 SoundScape . All Right Reserved.
+
+
+        script.
+            var cancelBtn = document.querySelector(".fa-xmark");
+            var hamBtn = document.querySelector(".fa-bars");
+            var navLinks = document.querySelector(".nav-links");
+
+            hamBtn.addEventListener("click", function() {
+                navLinks.classList.add("active");
+            });
+
+            cancelBtn.addEventListener("click", function() {
+                navLinks.classList.remove("active");
+            });                    
+                           
+            
