@@ -358,18 +358,18 @@ block content
                 i.fa-solid.fa-shield-cat.fa-flip
                 | SoundScape
             .nav-links
-                a(href='index.pug') Home
-                a(href='shows.pug') Shows
-                a(href='hosts.pug') Hosts
-                a(href='about.pug') About
-                a(href='contact.pug') Contact
-                a.nav-login(href='login.pug') Login
+                a(href='index') Home
+                a(href='shows') Shows
+                a(href='hosts') Hosts
+                a(href='about') About
+                a(href='contact') Contact
+                a.nav-login(href='login') Login
                 i.fa-solid.fa-xmark
             i.fa-solid.fa-bars
 
         .login-container
             h2 Login
-            form(action="submit_login.php", method="post")
+            form(action="submit_login", method="post")
                 .input-group
                     input.login-input(type="text", id="username", name="username", required, placeholder="Username")
                 .input-group
@@ -379,9 +379,9 @@ block content
                 button(type="submit") Login
                 p Don't Have an Account?
                 .login-account
-                    a(href="signup-listener.pug") Sign Up as a Listener
+                    a(href="signup-listener") Sign Up as a Listener
                 .login-account
-                    a(href="signup-host.pug") Sign Up as Host
+                    a(href="signup-host") Sign Up as Host
         footer
             section
                 .footer-logo
@@ -392,11 +392,11 @@ block content
             section
                 h2.footer-section-subheading Quick Links
                 .footer-links
-                    a(href='home.pug') Home
-                    a(href='shows.pug') Shows
-                    a(href='hosts.pug') Hosts
-                    a(href='about.pug') About Us
-                    a(href='login.pug') Login
+                    a(href='home') Home
+                    a(href='shows') Shows
+                    a(href='hosts') Hosts
+                    a(href='about') About Us
+                    a(href='login') Login
             section
                 h2.footer-section-subheading Contact Us
                 .footer-contact

@@ -182,19 +182,21 @@ block append head
             border: none;
         }
 
-        .signup-container button {
-            margin-left: 35%;
+        a button {
+            margin-left: 45%;
             width: 90px;
+            display:block;
             background-color: var(--purple);
             color: var(--white);
             padding: 5px 5px;
             border: none;
             border-radius: 30px;
             font-size: .9rem;
-            margin-top: 8px;
+            margin-top: -160px;
             transition: .5s;
+            margin-bottom:110px;
         }
-        .signup-container button:hover{
+        a button:hover{
             background-color: var(--white);
             color: black;
             cursor: pointer;
@@ -329,16 +331,16 @@ block content
                 i.fa-solid.fa-shield-cat.fa-flip
                 | SoundScape
             .nav-links
-                a(href='home.pug') Home
-                a(href='shows.pug') Shows
-                a(href='hosts.pug') Hosts
-                a(href='about.pug') About
-                a(href='contact.pug') Contact
-                a.nav-login(href='login.pug') Login
+                a(href='home') Home
+                a(href='shows') Shows
+                a(href='hosts') Hosts
+                a(href='about') About
+                a(href='contact') Contact
+                a.nav-login(href='login') Login
                 i.fa-solid.fa-xmark
             i.fa-solid.fa-bars
 
-        form(action="host-dashboard.pug", method="post", name="form1", onsubmit="return validateForm()")
+        form()
             .signup-container
                 h2 Sign Up
                 .div1
@@ -353,7 +355,9 @@ block content
                     input(onblur="val_password()", type="password", name="password", id="password", placeholder="Password")
                 .div1
                     input(type="password", name="confirmpassword", placeholder="Confirm Password"  onblur="val_Password()")
-                button(type="submit") Sign Up
+
+        a.nav-login(href='host-dashboard')
+            button(type="submit") Sign Up      
         footer
             section
                 .footer-logo
@@ -364,11 +368,11 @@ block content
             section
                 h2.footer-section-subheading Quick Links
                 .footer-links
-                    a(href='home.pug') Home
-                    a(href='shows.pug') Shows
-                    a(href='hosts.pug') Hosts
-                    a(href='about.pug') About Us
-                    a(href='login.pug') Login
+                    a(href='home') Home
+                    a(href='shows') Shows
+                    a(href='hosts') Hosts
+                    a(href='about') About Us
+                    a(href='login') Login
             section
                 h2.footer-section-subheading Contact Us
                 .footer-contact

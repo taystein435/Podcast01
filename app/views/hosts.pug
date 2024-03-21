@@ -154,220 +154,153 @@ block append head
             }
         }
 
-            footer {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: space-between;
-                gap: 50px;
-                padding: 100px 50px;
-                color: var(--white);
-                background-color: var(--darkBlue);
-            }
 
-            footer section {
-                width: 20%;
-                min-width: 250px;
-            }
+        .main-categories h1 {
 
-
-            .footer-logo .footer-section-subheading {
-                font-size: 1.5rem;
-                margin-bottom: 25px;
-            }
-
-            .footer-logo i {
-                color: var(--purple);
-            }
-
-            footer section:nth-of-type(1) {
-                font-size: .8rem;
-                color: var(--white);
-                line-height: 1.7;
-            }
-            footer section:nth-of-type(2) .footer-links{
-                display: flex;
-                flex-direction: column;
-                gap: 20px;
-            } .footer-links a{
-                color: var(--white);
-                transition: .5s;
-                font-size: .9rem;
-            } .footer-links a:hover {
-                color: var(--purple);
-            }
-
-
-            .socials {
-                display: flex;
-                gap: 30px;
-            }
-            .socials a {
-                color: var(--white);
-                font-size: 1.2rem;
-                transform: .5s;
-            }
-            .socials a:hover {
-                transform: scale(.99);
-                color: var(--purple);
-            }
-
-
-            .footer-contact {
-                display: flex;
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .contact-space div:nth-of-type(1) {
-                display: flex;
-                gap: 5px;
-                font-size: .9rem;
-                align-items: center;
-                margin-bottom: 10px;
-            }
-
-            .ft-number {
-                font-size: .8rem;
-                color: var(--white);
-            }
-            .fm-mail {
-                font-size: .8rem;
-                text-decoration: underline;
-                color: var(--white);
-            }
-
-
-            .copyright {
-                text-align: center;
-                padding: 10px;
-                font-size: .8rem;
-                color: var(--white);
-                background-color: var(--ash);
-            }
-
-
-
-
-
-
-
-
-
-
-
-            @media screen and (max-width: 700px){
-
-                footer {
-                    padding: 90px 20px;
-                }
-            }
-
-
-
-
-            
-
-        header {
-            height: calc(80vh - 80px);
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: center;
-            background-image: url(../images/pod2.jpg);
-            margin-bottom: 50px;
+            padding: 10px;
+            text-align: center; 
         }
-
-        .header-text h1{
+        .categories-container {
+            display: flex;
+            justify-content: center;
+            width: auto;
+            flex-wrap: wrap;
+        }
+        .categories-list {
+            background: var(--darkBlue);
             color: var(--white);
-            width: 900px;
-            margin: 200px 0px 50px 50%;
-            line-height: 1.9;
+            margin: 5px;
+            border-radius: 10px;
+            width: 180px;
+            padding: 10px;
+            line-height: 1.6;
+            position: relative;
         }
-        .header-text h1 span{
+        .categories-container .categories-list img {
+
+            width: 150px;
+            height: 100px;
+        
+        }
+        .categories-list-text p {
+            color: var(--ash);
+        }
+    
+        @media (max-width: 768px) {
+            .categories-container {
+                flex-direction: column; 
+            }
+        
+        }
+        @media (max-width: 480px) {
+        
+            .categories-list {
+                width: calc(100% - 20px);
+                font-size: 16px;
+            }
+        }
+
+        
+
+        footer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 50px;
+            padding: 100px 50px;
+            color: var(--white);
+            background-color: var(--darkBlue);
+        }
+
+        footer section {
+            width: 20%;
+            min-width: 250px;
+        }
+
+
+        .footer-logo .footer-section-subheading {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+        }
+
+        .footer-logo i {
             color: var(--purple);
         }
 
-        .main-shows h1{
-            padding: 20px;
-            text-align: center; 
-            
+        footer section:nth-of-type(1) {
+            font-size: .8rem;
+            color: var(--white);
+            line-height: 1.7;
         }
-        
-        .shows-container{
-            display: grid;
-            grid-template-columns: 300px 300px;
-            justify-content: center;
-            gap: 20px;
-            width: auto;
-            flex-wrap: wrap;
-            
-        }
-        
-        .shows-list{
+        footer section:nth-of-type(2) .footer-links{
             display: flex;
-            background: var(--darkBlue);
+            flex-direction: column;
+            gap: 20px;
+        } .footer-links a{
             color: var(--white);
-            gap: 10px;
-            margin: 5px;
-            border-radius: 10px;
-            width: 300px;
-            padding: 10px;
-            line-height: 1.6;
-            
-        }
-        
-        .shows-list .show-list-text{
-            padding-top: 10px;
-        }
-        .show-list-text h3{
-            color: var(--white);
-            padding-bottom: 10px;
-            font-weight: bold;
-        }
-        
-        .show-list-text p{
-            color: var(--ash);
-        }
-        
-        .shows-list .show-list-text a{
-            background-color: var(--purple);
-            color: var(--white);
-            display: block;
-            padding: 5px 5px;
-            border-radius: 30px;
-            width: 100px;
-            font-size: .9rem;
-            margin-top: 10px;
             transition: .5s;
+            font-size: .9rem;
+        } .footer-links a:hover {
+            color: var(--purple);
+        }
+
+
+        .socials {
+            display: flex;
+            gap: 30px;
+        }
+        .socials a {
+            color: var(--white);
+            font-size: 1.2rem;
+            transform: .5s;
+        }
+        .socials a:hover {
+            transform: scale(.99);
+            color: var(--purple);
+        }
+
+
+        .footer-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-space div:nth-of-type(1) {
+            display: flex;
+            gap: 5px;
+            font-size: .9rem;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .ft-number {
+            font-size: .8rem;
+            color: var(--white);
+        }
+        .fm-mail {
+            font-size: .8rem;
+            text-decoration: underline;
+            color: var(--white);
+        }
+
+
+        .copyright {
+            text-align: center;
+            padding: 10px;
+            font-size: .8rem;
+            color: var(--white);
+            background-color: var(--ash);
         }
         
-        .shows-list .show-list-text a:hover{
-            background-color: var(--white);
-            color: black;
-        }
-        
-        .shows-container .shows-list img{
-            width: 150px;
-            height: 150px;
-            padding-top: 10px;
-        }
 
+        @media screen and (max-width: 700px){
 
-        @media (max-width: 600px) {
-            .shows-container {
-                font-size: 14px;
-                grid-template-columns: 1fr; /* Only one column on smaller screens */
-            }
-
-            .shows-list {
-                flex-direction: column; 
-                margin-left: 50px;
-            }
-
-            .shows-container .shows-list img {
-                width: 100%; /* Full width of the container */
-                height: auto; /* Maintain aspect ratio */
+            footer {
+                padding: 90px 20px;
             }
         }
+
                 
 block content
     body
@@ -376,14 +309,36 @@ block content
                 i.fa-solid.fa-shield-cat.fa-flip
                 | SoundScape
             .nav-links
-                a(href='home.pug') Home
-                a(href='shows.pug') Shows
-                a(href='hosts.pug') Hosts
-                a(href='about.pug') About
-                a(href='contact.pug') Contact
-                a.nav-login(href='login.pug') Login
+                a(href='home') Home
+                a(href='shows') Shows
+                a(href='hosts') Hosts
+                a(href='about') About
+                a(href='contact') Contact
+                a.nav-login(href='login') Login
                 i.fa-solid.fa-xmark
             i.fa-solid.fa-bars
+
+        main.main-categories
+            h1 Categories
+            .categories-container
+                .categories-list
+                img(src="https://images.pexels.com/photos/6954162/pexels-photo-6954162.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="")
+                .categories-list-text
+                    h3 Health & Fitness
+                    h5 Transform, thrive, rejuvenate.
+                    p Michael Mosley
+                .categories-list
+                img(src="https://images.pexels.com/photos/6954162/pexels-photo-6954162.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="")
+                .categories-list-text
+                    h3 Business
+                    h5 Empowering your journey towards unparalleled business success
+                    p The GaryVee Audio
+                .categories-list
+                img(src="https://images.pexels.com/photos/6954162/pexels-photo-6954162.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="")
+                .categories-list-text
+                    h3 Sport
+                    h5 Sport News
+                    p Gabby Logan and Mark Chapman            
 
         footer
             section
@@ -395,11 +350,11 @@ block content
             section
                 h2.footer-section-subheading Quick Links
                 .footer-links
-                    a(href='index.pug') Home
-                    a(href='shows.pug') Shows
-                    a(href='hosts.pug') Hosts
-                    a(href='about.pug') About Us
-                    a(href='login.pug') Login
+                    a(href='index') Home
+                    a(href='shows') Shows
+                    a(href='hosts') Hosts
+                    a(href='about') About Us
+                    a(href='login') Login
             section
                 h2.footer-section-subheading Contact Us
                 .footer-contact

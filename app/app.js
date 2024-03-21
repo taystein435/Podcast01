@@ -68,7 +68,71 @@ app.get("/", function(req, res) {
     // Set up an array of data
     var test_data = ['one', 'two', 'three', 'four'];
     // Send the array through to the template as a variable called data
-    res.render("index", {'title':'My index page', 'heading':'My heading', 'data':test_data});
+    res.render("host-dashboard", {'title':'My index page', 'heading':'My heading', 'data':test_data});
+});
+
+app.get("/home", function(req, res) {
+    // Set up an array of data
+    var test_data = ['one', 'two', 'three', 'four'];
+    // Send the array through to the template as a variable called data
+    res.render("home", {'title':'My Home', 'heading':'My heading', 'data':test_data});
+});
+
+// Create a route for root - /
+app.get("/shows", function(req, res) {
+    // Set up an array of data
+    var test_data = ['one', 'two', 'three', 'four'];
+    // Send the array through to the template as a variable called data
+    res.render("shows", {'title':'Shows', 'heading':'My heading', 'data':test_data});
+});
+app.get("/hosts", function(req, res) {
+    // Set up an array of data
+    var test_data = ['one', 'two', 'three', 'four'];
+    // Send the array through to the template as a variable called data
+    res.render("hosts", {'title':'Host', 'heading':'My heading', 'data':test_data});
+});
+// Create a route for root - /
+app.get("/login", function(req, res) {
+    // Set up an array of data
+    var test_data = ['one', 'two', 'three', 'four'];
+    // Send the array through to the template as a variable called data
+    res.render("login", {'title':'Login', 'heading':'My heading', 'data':test_data});
+});
+app.get("/about", function(req, res) {
+    // Set up an array of data
+    var test_data = ['one', 'two', 'three', 'four'];
+    // Send the array through to the template as a variable called data
+    res.render("about", {'title':'About', 'heading':'My heading', 'data':test_data});
+});
+app.get("/contact", function(req, res) {
+    // Set up an array of data
+    var test_data = ['one', 'two', 'three', 'four'];
+    // Send the array through to the template as a variable called data
+    res.render("contact", {'title':'Contact', 'heading':'My heading', 'data':test_data});
+});
+app.get("/signup-listener", function(req, res) {
+    // Set up an array of data
+    var test_data = ['one', 'two', 'three', 'four'];
+    // Send the array through to the template as a variable called data
+    res.render("signup-listener", {'title':'signup-listener', 'heading':'My heading', 'data':test_data});
+});
+app.get("/signup-host", function(req, res) {
+    // Set up an array of data
+    var test_data = ['one', 'two', 'three', 'four'];
+    // Send the array through to the template as a variable called data
+    res.render("signup-host", {'title':'signup-host', 'heading':'My heading', 'data':test_data});
+});
+app.get("/host-dashboard", function(req, res) {
+    // Set up an array of data
+    var test_data = ['one', 'two', 'three', 'four'];
+    // Send the array through to the template as a variable called data
+    res.render("host-dashboard", {'title':'host-dashboard', 'heading':'My heading', 'data':test_data});
+});
+app.get("/host-addShow", function(req, res) {
+    // Set up an array of data
+    var test_data = ['one', 'two', 'three', 'four'];
+    // Send the array through to the template as a variable called data
+    res.render("host-addShow", {'title':'host-addShow', 'heading':'My heading', 'data':test_data});
 });
 
 

@@ -163,7 +163,7 @@ block append head
         }
         .dashboard-container{
             display: grid;
-            grid-template-columns: 300px 300px;
+            grid-template-columns: (300px 300px);
             justify-content: center;
             width: auto;
         }
@@ -175,7 +175,7 @@ block append head
             border-radius: 10px;
             padding: 20px;
             line-height: 1.6;
-            flex-direction: column;
+           
         }
         .dashboard-container img{
             height: 80px;
@@ -331,19 +331,20 @@ block content
                 i.fa-solid.fa-shield-cat.fa-flip
                 | SoundScape
             .nav-links
-                a(href='home.pug') Home
-                a(href='shows.pug') Shows
-                a(href='hosts.pug') Hosts
-                a(href='about.pug') About
-                a(href='contact.pug') Contact
-                a.nav-login(href='login.pug') Login
+                a(href='home') Home
+                a(href='shows') Shows
+                a(href='host') Hosts
+                a(href='about') About
+                a(href='contact') Contact
+                a.nav-login(href='login') Login
                 i.fa-solid.fa-xmark
             i.fa-solid.fa-bars
 
         .dashboard
             h3 My Shows
+            
             .dashboard-container
-                - for (var i = 0; i < 7; i++)
+                - for (var i = 0; i < 9; i++)
                 .dashboard-list
                     img(src="https://images.pexels.com/photos/3602934/pexels-photo-3602934.jpeg", alt="")
                     .dashboard-text
@@ -351,7 +352,7 @@ block content
                         h4 Category:
                         h4 Description:
             .dashboard-container
-                - for (var i = 0; i < 7; i++)
+                - for (var i = 0; i < 9; i++)
                 .dashboard-list
                     img(src="https://images.pexels.com/photos/3602934/pexels-photo-3602934.jpeg", alt="")
                     .dashboard-text
@@ -359,7 +360,7 @@ block content
                         h4 Category:
                         h4 Description:
             .dashboard-container
-                - for (var i = 0; i < 7; i++)
+                - for (var i = 0; i < 9; i++)
                 .dashboard-list
                     img(src="https://images.pexels.com/photos/3602934/pexels-photo-3602934.jpeg", alt="")
                     .dashboard-text
@@ -367,7 +368,7 @@ block content
                         h4 Category:
                         h4 Description:
             .dashboard-container
-                - for (var i = 0; i < 7; i++)
+                - for (var i = 0; i < 9; i++)
                 .dashboard-list
                     img(src="https://images.pexels.com/photos/3602934/pexels-photo-3602934.jpeg", alt="")
                     .dashboard-text
@@ -375,7 +376,7 @@ block content
                         h4 Category:
                         h4 Description:
             .dashboard-container
-                - for (var i = 0; i < 7; i++)
+                - for (var i = 0; i < 9; i++)
                 .dashboard-list
                     img(src="https://images.pexels.com/photos/3602934/pexels-photo-3602934.jpeg", alt="")
                     .dashboard-text
@@ -383,7 +384,7 @@ block content
                         h4 Category:
                         h4 Description:
             .dashboard-container
-                - for (var i = 0; i < 7; i++)
+                - for (var i = 0; i < 9; i++)
                 .dashboard-list
                     img(src="https://images.pexels.com/photos/3602934/pexels-photo-3602934.jpeg", alt="")
                     .dashboard-text
@@ -391,7 +392,7 @@ block content
                         h4 Category:
                         h4 Description:
             .dashboard-container
-                - for (var i = 0; i < 7; i++)
+                - for (var i = 0; i < 9; i++)
                 .dashboard-list
                     img(src="https://images.pexels.com/photos/3602934/pexels-photo-3602934.jpeg", alt="")
                     .dashboard-text
@@ -399,29 +400,29 @@ block content
                         h4 Category:
                         h4 Description:
             .dashboard-container
-                - for (var i = 0; i < 7; i++)
+                - for (var i = 0; i < 9; i++)
                 .dashboard-list
                     img(src="https://images.pexels.com/photos/3602934/pexels-photo-3602934.jpeg", alt="")
                     .dashboard-text
                         h4 Title:
                         h4 Category:
                         h4 Description:
-                a(href="host-addShow.pug") Add New Shows
+        a(href="host-addShow") Add New Shows
         footer
             section
                 .footer-logo
                     i.fa-solid.fa-shield-cat
-                    | SoundScape
+                    h2 SoundScape
                 p
                     | Stay tuned, stay inspired, and keep the conversations going with SoundScape. Connect, share, and dive deeper into the world of podcasts with us.
             section
                 h2.footer-section-subheading Quick Links
                 .footer-links
-                    a(href='home.pug') Home
-                    a(href='shows.pug') Shows
-                    a(href='hosts.pug') Hosts
-                    a(href='about.pug') About Us
-                    a(href='login.pug') Login
+                    a(href='home') Home
+                    a(href='shows') Shows
+                    a(href='hosts') Hosts
+                    a(href='about') About Us
+                    a(href='login') Login
             section
                 h2.footer-section-subheading Contact Us
                 .footer-contact
