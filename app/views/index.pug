@@ -1,11 +1,111 @@
 extends layout
-block content
-    h1 #{heading}
-    p first paragraph 
-    p now lets loop 
-    p A new test for git by Faith
 
-    p cook food 
-    p roehampton university
-    each item in data  
-        p #{item}
+block append head
+ style.
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    body, html {
+      overflow-x: hidden;
+      text-rendering: optimizeSpeed;
+      scroll-behavior: smooth;
+      font-family: sans-serif;
+    }
+    body {
+      height: 100vh;
+      overflow-y: scroll;
+    }
+    :root {
+      --white: #ffff;
+      --darkBlue: #0e041f;
+      --ash: #5e5d61;
+      --purple: #9c1778;
+      --black: black;
+      --var--background: linear-gradient(to bottom, rgb(28, 3, 31), rgba(189, 8, 120, 0.765), rgb(33, 8, 32));  
+    }
+    header {
+      margin-top: 80px;
+      margin-bottom: 90px;
+    }
+    header h1 {
+      width: 1200px;
+      text-align: center;
+      margin: auto;
+    }
+    main {
+      margin-top: 50px;
+      margin-bottom: 80px;
+    }
+    .about-container {
+      width: 1500px;
+      display: flex;
+      gap: 70px;
+      padding-left: 20%;
+      line-height: 1.6;
+    }
+    .about-container h1 {
+      text-align: center;
+    }
+    @media (max-width: 1200px) {
+      header h1 {
+        max-width: 90%;
+      }
+      .about-container {
+        max-width: 90%;
+        padding: 0 5%;
+      }
+    }
+    @media (max-width: 768px) {
+      .about-container {
+        flex-direction: column;
+      }
+    }
+    @media (max-width: 480px) {
+      header {
+        margin-top: 50px;
+        margin-bottom: 60px;
+      }
+      .about-container {
+        padding: 0 3%;
+      }
+    }
+
+block content
+  h1 #{heading}
+  p first paragraph
+  p now lets loop
+  p A new test for git by Faith
+  p cook food
+  p roehampton university
+
+  nav
+    .logo
+      i.fa-solid.fa-shield-cat.fa-flip SoundScape
+
+    .nav-links
+      a(href="index.html") Home
+      a(href="shows.html") Shows
+      a(href="hosts.html") Hosts
+      a(href="about.html") About
+      a(href="contact.html") Contact
+      a.nav-login(href="login.html") Login
+      i.fa-solid.fa-xmark
+
+    i.fa-solid.fa-bars
+
+  header
+    h1 Explore life's tapestry with SoundScape Podcast, where each episode is a journey, exploring life's wonders and mysteries through immersive sound design and compelling narratives
+
+  main
+    .about-container
+      .our-mission
+        h1 Our Mission
+        p Our mission is to connect hearts and minds through the power of storytelling, bringing diverse voices and experiences to the forefront. We aim to inspire, educate, and entertain, fostering a global community united by a shared love for captivating narratives and profound insights.
+      .Our-value
+        h1 Our Values
+        p Our core value lies in embracing authenticity, diversity, and creativity. We believe in the transformative power of storytelling to bridge gaps, spark curiosity, and cultivate a deeper understanding and appreciation of the world around us. Through our commitment to these principles, we strive to enrich the lives of our listeners and contribute positively to the global narrative.
+      .founder
+        h1 Founder
+        p From our founder: 'At the heart of our podcast lies a passion for storytelling and a belief in its power to connect us all. We started this journey with a vision to create a space where diverse voices and
