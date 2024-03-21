@@ -21,9 +21,14 @@ const { Show } = require("../app/models.js/shows");
 
 
 // Create a route for root - /
-app.get("/", function (req, res) {
-  res.render("index");
+app.get("/index", function (req, res) {
+  res.render("home");
 });
+// Create a route for home - /
+app.get("/home", function (req, res) {
+    res.render("home");
+  });
+  
 
 //  Create a route for Single show
 app.get("/show-single/:id", async function (req, res) {
@@ -31,7 +36,7 @@ app.get("/show-single/:id", async function (req, res) {
     var show = new Show(shId);
     await show.getShowDetails();
     console.log(show);
-    res.send(show)
+    res.render("");
   
 });
 
@@ -58,23 +63,65 @@ app.get("/listener-single/:id", async function (req, res) {
 
 
 //Create a route for all shows 
-app.get("/all-shows", function (req, res) {
+app.get("/shows", function (req, res) {
     var sql = "SELECT * FROM Shows";
     db.query(sql).then((results) => {
      //res.json(results);
-      res.render('all-shows', {data:results});
+      res.render('shows', {data:results});
     });
   });
 
 
 
   //Create a route for all podcasters
-  app.get("/all-podcasters", function (req, res) {
+  app.get("/hosts", function (req, res) {
     var sql = "SELECT * FROM Podcasters";
     db.query(sql).then((results) => {
-      res.json(results);
+        res.render('hosts', {data:results});
     });
 });
+
+
+
+app.get("/login", function (req, res) {
+    var sql = "SELECT * FROM Podcasters";
+    db.query(sql).then((results) => {
+        res.render('login', {data:results});
+    });
+});
+
+app.get("/about", function (req, res) {
+    var sql = "SELECT * FROM Podcasters";
+    db.query(sql).then((results) => {
+        res.render('about', {data:results});
+    });
+});
+
+app.get("/contact", function (req, res) {
+    var sql = "SELECT * FROM Podcasters";
+    db.query(sql).then((results) => {
+        res.render('contact', {data:results});
+    });
+});
+app.get("/signup-listener", function (req, res) {
+    var sql = "SELECT * FROM Podcasters";
+    db.query(sql).then((results) => {
+        res.render('signup-listener', {data:results});
+    });
+});
+app.get("/signup-host", function (req, res) {
+    var sql = "SELECT * FROM Podcasters";
+    db.query(sql).then((results) => {
+        res.render('signup-host', {data:results});
+    });
+});
+app.get("/host-addShow", function (req, res) {
+    var sql = "SELECT * FROM Podcasters";
+    db.query(sql).then((results) => {
+        res.render('host-addShow', {data:results});
+    });
+});
+v
 // Create a route for testing the db
 app.get("/db_test", function(req, res) {
     // Assumes a table called test_table exists in your database
@@ -91,24 +138,6 @@ app.get("/goodbye", function(req, res) {
     res.send("Goodbye world!");
 });
 
-// Create a dynamic route for /hello/<name>, where name is any value provided by user
-// At the end of the URL
-// Responds to a 'GET' request
-app.get("/hello/:name", function(req, res) {
-    // req.params contains any parameters in the request
-    // We can examine it in the console for debugging purposes
-    console.log(req.params);
-    //  Retrieve the 'name' parameter and use it in a dynamically generated page
-    res.send("Hello " + req.params.name);
-});
-
-// Create a route for root - /
-app.get("/", function(req, res) {
-    // Set up an array of data
-    var test_data = ['one', 'two', 'three', 'four'];
-    // Send the array through to the template as a variable called data
-    res.render("index", {'title':'My index page', 'heading':'My heading', 'data':test_data});
-});
 
 
 // Start server on port 3000
