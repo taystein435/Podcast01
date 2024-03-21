@@ -1,0 +1,13 @@
+extends layout
+
+block content
+    - console.log(data)
+    .main-content 
+        h1 All shows
+        table(border=1)
+            for item in data
+                tr  
+                    td #{item.Podcast_id}
+                    td 
+                        a(href='//' + item.Podcast_id) #{item.Title}
+                        img(src=item.CoverImageURL)
