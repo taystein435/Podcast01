@@ -1,4 +1,4 @@
-// Import express.js
+
 const express = require("express");
 
 // Create express app
@@ -17,14 +17,14 @@ const db = require("./services/db");
 // Get the models
 const {  Listener } = require("../app/models.js/listeners");
 const { Podcaster } = require("../app/models.js/podcasters");
-const { Show } = require("../app/models.js/;
-  
-  
-// Create a route for home 
+const { Show } = require("../app/models.js/shows");
+
+
+// Create a route for root - /
 app.get("/", function (req, res) {
-    res.render("home");
-  });
-  
+  res.render("home");
+});
+
 
 //  Create a route for Single show
 app.get("/show-single/:id", async function (req, res) {
@@ -116,6 +116,22 @@ app.get("/host-addShow", function (req, res) {
     db.query(sql).then((results) => {
         res.render('host-addShow', {data:results});
     });
+});
+v
+// Create a route for testing the db
+app.get("/db_test", function(req, res) {
+    // Assumes a table called test_table exists in your database
+    sql = 'select * from test_table';
+    db.query(sql).then(results => {
+        console.log(results);
+        res.send(results)
+    });
+});
+
+// Create a route for /goodbye
+// Responds to a 'GET' request
+app.get("/goodbye", function(req, res) {
+    res.send("Goodbye world!");
 });
 
 
