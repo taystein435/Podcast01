@@ -1,0 +1,395 @@
+extends layout
+
+block append head
+    style.
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+                    
+        body,html {
+            overflow-x: hidden;
+            text-rendering: optimizeSpeed;
+            scroll-behavior: smooth;
+            font-family: sans-serif;
+        }
+        body {
+            height: 100vh;
+            overflow-y: scroll;
+        }
+        
+        :root {
+            --white: #ffff;
+
+            --darkBlue: #0e041f;
+            --ash: #5e5d61;
+
+            --purple: #9c1778;
+        }
+
+
+
+        a {
+           text-decoration: none;
+        }
+
+        nav {
+            position: sticky;
+            top: 0px;
+            z-index: 3;
+            background-color: var(--darkBlue);
+            color: var(--white);
+            width: 100%;
+            height: 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+        }
+
+        nav .logo {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            font-size: 2rem;
+        }
+
+        nav .logo .fa-shield-cat {
+            color: var(--purple);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            transition: 0.5s;
+            position: relative;
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 2px;
+            background-color: var(--white);
+            bottom: -5px;
+            left: 0px;
+            transition: 0.5s;
+        }
+
+        .nav-links a:hover {
+            color: var(--purple);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links .fa-xmark {
+            display: none;
+            transition: 0.5s;
+        }
+
+        nav .fa-bars {
+            display: none;
+            font-size: 1.5rem;
+            transition: 0.5s;
+            cursor: pointer;
+        }
+
+        .nav-links a .nav-login {
+            height: 30px;
+            width: 400px;
+            background-color: var(--darkBlue);
+            color: var(--white);
+        }
+
+        @media screen and (max-width: 700px) {
+            nav {
+                padding: 10px 20px;
+            }
+
+            nav .fa-bars {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                width: 100%;
+                z-index: 10;
+                height: fit-content;
+                flex-direction: column;
+                padding: 30px;
+                top: 0px;
+                left: 0px;
+                transform: translateX(100%);
+                background-color: var(--purple);
+                transition: 0.5s;
+            }
+
+            .nav-links.active {
+                transform: translateX(0%);
+            }
+
+            .nav-links .fa-xmark {
+                display: block;
+                cursor: pointer;
+                position: fixed;
+                top: 30px;
+                right: 30px;
+                font-size: 1.5rem;
+            }
+
+            .nav-links a {
+                width: 100%;
+            }
+
+            .nav-links a:after {
+                display: none;
+            }
+        }
+
+
+        header{
+            margin-top: 80px;
+            margin-bottom: 90px;
+        }
+
+        header h1{
+            width: 1200px;
+            text-align: center;
+            margin: auto;
+            
+        }
+
+        main{
+            margin-top: 50px;
+            margin-bottom: 80px;
+        }
+        .about-container{
+            width: 1500px;
+            display: flex;
+            gap: 80px;
+            padding-left: 20%;
+            line-height: 1.6;
+        }
+
+        .about-container h1{
+            text-align: center;
+        }
+
+
+        @media (max-width: 1200px) {
+            header h1 {
+                max-width: 90%; 
+                
+            }
+
+            .about-container {
+                max-width: 90%; 
+                padding: 0 5%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .about-container {
+                flex-direction: column; 
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                margin-top: 50px;
+                margin-bottom: 60px;
+            }
+
+            .about-container {
+                padding: 0 3%; 
+            }
+        }
+
+
+        footer {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 50px;
+            padding: 100px 50px;
+            color: var(--white);
+            background-color: var(--darkBlue);
+        }
+
+        footer section {
+            width: 20%;
+            min-width: 250px;
+        }
+
+
+        .footer-logo .footer-section-subheading {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+        }
+
+        .footer-logo i {
+            color: var(--purple);
+        }
+
+        footer section:nth-of-type(1) {
+            font-size: .8rem;
+            color: var(--white);
+            line-height: 1.7;
+        }
+        footer section:nth-of-type(2) .footer-links{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        } .footer-links a{
+            color: var(--white);
+            transition: .5s;
+            font-size: .9rem;
+        } .footer-links a:hover {
+            color: var(--purple);
+        }
+
+
+        .socials {
+            display: flex;
+            gap: 30px;
+        }
+        .socials a {
+            color: var(--white);
+            font-size: 1.2rem;
+            transform: .5s;
+        }
+        .socials a:hover {
+            transform: scale(.99);
+            color: var(--purple);
+        }
+
+
+        .footer-contact {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-space div:nth-of-type(1) {
+            display: flex;
+            gap: 5px;
+            font-size: .9rem;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .ft-number {
+            font-size: .8rem;
+            color: var(--white);
+        }
+        .fm-mail {
+            font-size: .8rem;
+            text-decoration: underline;
+            color: var(--white);
+        }
+
+
+        .copyright {
+            text-align: center;
+            padding: 10px;
+            font-size: .8rem;
+            color: var(--white);
+            background-color: var(--ash);
+        }
+
+        @media screen and (max-width: 700px){
+
+            footer {
+                padding: 90px 20px;
+            }
+        }
+         
+
+
+block content
+    body
+        nav
+            .logo
+                i.fa-solid.fa-shield-cat.fa-flip
+                | SoundScape
+            .nav-links
+                a(href='home') Home
+                a(href='shows') Shows
+                a(href='hosts') Hosts
+                a(href='about') About
+                a(href='contact') Contact
+                a.nav-login(href='login') Login
+                i.fa-solid.fa-xmark
+            i.fa-solid.fa-bars
+
+        header
+            h1 Explore life's tapestry with SoundScape Podcast, where each episode is a journey, exploring life's wonders and mysteries through immersive sound design and compelling narratives
+
+        main
+            .about-container
+                .our-mission
+                    h1 Our Mission
+                    p Our mission is to connect hearts and minds through the power of storytelling, bringing diverse voices and experiences to the forefront. We aim to inspire, educate, and entertain, fostering a global community united by a shared love for captivating narratives and profound insights.
+
+                .Our-value
+                    h1 Our Values
+                    p Our core value lies in embracing authenticity, diversity, and creativity. We believe in the transformative power of storytelling to bridge gaps, spark curiosity, and cultivate a deeper understanding and appreciation of the world around us. Through our commitment to these principles, we strive to enrich the lives of our listeners and contribute positively to the global narrative
+
+                .founder
+                    h1 Founder
+                    p From our founder: 'At the heart of our podcast lies a passion for storytelling and a belief in its power to connect us all. We started this journey with a vision to create a space where diverse voices and stories could thrive, transcending boundaries and touching lives. Thank you for joining us on this incredible journey, and here's to the many adventures that lie ahead.'
+
+        footer
+            section
+                .footer-logo
+                    i.fa-solid.fa-shield-cat
+                    h2 SoundScape
+                p
+                    | Stay tuned, stay inspired, and keep the conversations going with SoundScape. Connect, share, and dive deeper into the world of podcasts with us.
+            section
+                h2.footer-section-subheading Quick Links
+                .footer-links
+                    a(href='home') Home
+                    a(href='shows') Shows
+                    a(href='hosts') Hosts
+                    a(href='about') About Us
+                    a(href='login') Login
+            section
+                h2.footer-section-subheading Contact Us
+                .footer-contact
+                    .footer-location.contact-space
+                        .fl-subheading
+                            i.fa-solid.fa-location-dot
+                            p Find us:
+                        iframe.gg_map(src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2486.098772821752!2d-0.2468400022055832!3d51.456342923059815!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48760ee6c0c242eb%3A0x3a5665ce81752bbf!2sUniversity%20of%20Roehampton%20London!5e0!3m2!1sen!2suk!4v1702237981400!5m2!1sen!2suk', width='130', height='80', style='border: 2px solid orangered;', allowfullscreen='', loading='lazy', referrerpolicy='no-referrer-when-downgrade')
+                    .footer-tel.contact-space
+                        .ft-subheading
+                            i.fa-solid.fa-location-dot Call us
+                    p.ft-number +44-772-181-0275
+                .footer-mail.contact-space
+                    .fm-subheading
+                    i.fa-solid.fa-envelope Email:
+                    a.fm-mail(href="#") SoundScape@gmail.com
+            section
+                h2.footer-section-subheading Follow us
+                .socials
+                a
+                    i.fa-brands.fa-facebook
+                a(href="")
+                    i.fa-brands.fa-twitter.fa-beat
+                a(href="")
+                    i.fa-brands.fa-instagram.fa-beat-fade
+                a(href="")
+                    i.fa-brands.fa-tiktok.fa-shake
+        p.copyright Copyright © 2024 SoundScape . All Right Reserved.
+
+            

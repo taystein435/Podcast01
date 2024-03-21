@@ -5,4 +5,81 @@ block content
     h1 Single students 
     p  #{name}
 
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Login Page
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css")
+    link(rel="stylesheet", href="css/style.css")
+    link(rel="stylesheet", href="css/footer.css")
+    link(rel="stylesheet", href="css/about.css")
+
+  body
+    nav
+      .logo
+        i.fa-solid.fa-shield-cat.fa-flip
+        | SoundScape
+
+      .nav-links
+        a(href="index.html") Home
+        a(href="shows.html") Shows
+        a(href="hosts.html") Hosts
+        a(href="about.html") About
+        a(href="contact.html") Contact
+        a.nav-login(href="login.html") Login
+        i.fa-solid.fa-xmark
+
+      i.fa-solid.fa-bars
+
+    header
+      h1 Explore life's tapestry with SoundScape Podcast, where each episode is a journey, exploring life's wonders and mysteries through immersive sound design and compelling narratives
+
+    main
+      .about-container
+        .our-mission
+          h1 Our Mission
+          p Our mission is to connect hearts and minds through the power of storytelling, bringing diverse voices and experiences to the forefront. We aim to inspire, educate, and entertain, fostering a global community united by a shared love for captivating narratives and profound insights.
+        .Our-value
+          h1 Our Values
+          p Our core value lies in embracing authenticity, diversity, and creativity. We believe in the transformative power of storytelling to bridge gaps, spark curiosity, and cultivate a deeper understanding and appreciation of the world around us. Through our commitment to these principles, we strive to enrich the lives of our listeners and contribute positively to the global narrative.
+        .founder
+          h1 Founder
+          p From our founder: 'At the heart of our podcast lies a passion for storytelling and a belief in its power to connect us all. We started this journey with a vision to create a space where diverse voices and stories could thrive, transcending boundaries and touching lives. Thank you for joining us on this incredible journey, and here's to the many adventures that lie ahead.'
+
+    footer
+      section
+        .footer-logo
+          i.fa-solid.fa-shield-cat
+          | SoundScape
+        p Stay tuned, stay inspired, and keep the conversations going with SoundScape. Connect, share, and dive deeper into the world of podcasts with us.
+
+      section
+        h2.footer-section-subheading Quick Links
+        .footer-links
+          a(href="index.html") Home
+          a(href="shows.html") Shows
+          a(href="hosts.html") Hosts
+          a(href="about.html") About Us
+          a(href="contact.html") Contact
+          a(href="login.html") Login
+
+      section
+        h2.footer-section-subheading Contact Us
+        .footer-contact
+          .footer-location.contact-space
+            .fl-subheading
+              i.fa-solid.fa-location-dot
+              p Find us:
+            iframe.gg_map(src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2486.098772821752!2d-0.2468400022055832!3d51.456342923059815!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48760ee6c0c242eb%3A0x3a5665ce81752bbf!2sUniversity%20of%20Roehampton%20London!5e0!3m2!1sen!2suk!4v1702237981400!5m2!1sen!2suk", width="130", height="80", style="border: 2px solid orangered;", allowfullscreen="", loading="lazy", referrerpolicy="no-referrer-when-downgrade")
+          .footer-tel.contact-space
+            .ft-subheading
+              i.fa-solid.fa-location-dot
+              p Call us:
+            p.ft-number +44-772-181-0275
+          .footer-mail.contact-space
+            .fm-subheading
+              i.fa-solid.fa-envelope
+              p Email
+            a.fm-mail(href="#") SoundScape@gmail.com
+
 
