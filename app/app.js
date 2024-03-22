@@ -1,4 +1,4 @@
-// Import express.js
+
 const express = require("express");
 
 // Create express app
@@ -22,15 +22,11 @@ const { Show } = require("../app/models.js/shows");
 
 // Create a route for root - /
 app.get("/index", function (req, res) {
-  res.render("index");
+  res.render("home");
 });
 // Create a route for home - /
 app.get("/home", function (req, res) {
-    var sql = "SELECT * FROM Shows";
-    db.query(sql).then((results) => {
-     //res.json(results);
-      res.render('home', {data:results});
-    });
+    res.render("home");
   });
   
 
