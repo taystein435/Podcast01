@@ -22,11 +22,15 @@ const { Show } = require("../app/models.js/shows");
 
 // Create a route for root - /
 app.get("/index", function (req, res) {
-  res.render("home");
+  res.render("index");
 });
 // Create a route for home - /
 app.get("/home", function (req, res) {
-    res.render("home");
+    var sql = "SELECT * FROM Shows";
+    db.query(sql).then((results) => {
+     //res.json(results);
+      res.render('home', {data:results});
+    });
   });
   
 
@@ -121,7 +125,7 @@ app.get("/host-addShow", function (req, res) {
         res.render('host-addShow', {data:results});
     });
 });
-v
+
 // Create a route for testing the db
 app.get("/db_test", function(req, res) {
     // Assumes a table called test_table exists in your database

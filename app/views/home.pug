@@ -429,14 +429,13 @@ block content
     main.main-shows
       h1 Trending Shows
       .shows-container
-        - var shows = ['pod14', 'pod6', 'pod6', 'pod6']
-        each show in shows
-          .shows-list
-            img(src=`images/${show}.webp` alt="")
-            .show-list-text
-              h3 Comedy Interviews
-              p Get ready to laugh out loud with our latest comedy interview! Tune in for your dose of joy and jest!
-              a(href="#") Listen Now
+        each show in data
+                    .shows-list
+                        img(src=show.CoverImageURL, alt=show.Title)
+                        .show-list-text
+                            h3 #{show.Title}
+                            p #{show.Description} 
+                            a(href='#') Listen Now
     main.main-categories
       h1 Categories
       .categories-container
