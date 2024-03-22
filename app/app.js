@@ -26,9 +26,12 @@ app.get("/index", function (req, res) {
 });
 // Create a route for home - /
 app.get("/home", function (req, res) {
-    res.render("home");
+    var sql = "SELECT * FROM Shows";
+    db.query(sql).then((results) => {
+     //res.json(results);
+      res.render('home', {data:results});
+    });
   });
-  
 
 //  Create a route for Single show
 app.get("/show-single/:id", async function (req, res) {
