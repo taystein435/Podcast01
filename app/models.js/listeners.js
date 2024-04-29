@@ -21,9 +21,11 @@ class Listener {
 
     static async getUserByEmail(email) {
         try {
-
+            const sql = "SELECT * FROM Listeners WHERE Email = ?";
+            const result = await db.query(sql, [email]);
+            return result.length > 0 ? new Listener(result[0].Name, result[0].Email, result[0].Password) : null;
         } catch (error) {
-
+            throw new Error("Error retrieving user from database");
         }
     }
 
