@@ -15,18 +15,22 @@ app.use(session({
   cookie: { secure: false }
 }));
 
-// Create a route for root - /
-app.get("/index", function (req, res) {
-  res.render("home");
-});
-// Create a route for home - /
-app.get("/home", function (req, res) {
-    var sql = "SELECT * FROM Shows";
-    db.query(sql).then((results) => {
-     //res.json(results);
-      res.render('home', {data:results});
-    });
+app.get("/", function (req, res) {
+    // Check if user is logged in
+    if (req.session.loggedIn) {
+        var sql = "SELECT * FROM Shows";
+        db.query(sql).then((results) => {
+            res.render("home", { data: results, message: Welcome, ${req.session.uid}! });
+        });
+    } else {
+        // If not logged in, render the home page without a welcome message
+        var sql = "SELECT * FROM Shows";
+        db.query(sql).then((results) => {
+            res.render("home", { data: results, message: null }); // Passing null as the message
+        });
+    }
   });
+v  
 
 //  Create a route for Single show
 app.get("/show-single/:id", async function (req, res) {
