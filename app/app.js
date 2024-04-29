@@ -186,7 +186,17 @@ app.post('/authenticate', async (req, res) => {
             return res.status(404).json({ message: "User not found" });
         }
   
-
+        // Authenticate user
+        const isAuthenticated = await user.authenticate(password);
+  
+        if (!isAuthenticated) {
+            return res.status(401).json({ message: "Invalid email or password" });
+        }
+   // Set session variables
+        req.session.uid = uId;// Assuming Listener model has an 'id' property
+        req.session.loggedIn = true;
+              // Authentication successful
+        return res.redirect('/'); 
     } catch (error) {
         console.error("Error authenticating user:", error);
         return res.status(500).json({ message: "Internal server error" });
