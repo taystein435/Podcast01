@@ -158,37 +158,44 @@ block append head
         }
 
        /* ppa*/
+        .login-page{
+            display:flex;
+            justify-content: center;
+        }
         .login-container{
-            margin: 50px 0px 100px 350px;
-            width: 300px;
-            height: 370px;
-            background-color: #9c1778;  
-            border-radius:20px
+            margin:50px 0px 50px 0px;
+            width: 400px;
+            height: 470px;
+            border-radius: 20px;
+            background-color: #9c1778; 
+
         }
         .login-container h2{
             padding: 30px 0px 30px 0px;
             color: var(--white);
             text-align: center;
+        
         }
 
         .input-group{
             display: flex;
             justify-content: center;
             width: auto;
+            padding:10px;
             flex-wrap: wrap;
+            
         }
 
         .login-input{
-            width: 240px;
-            height: 30px;
-            margin-bottom: 10px;
+            width: 270px;
+            height: 40px;
             border-radius: 10px;
             text-align: center;
             border: none;
         }
 
         .login-container .forgot-link{
-            margin-left: 46%; 
+            margin-left: 50%; 
         }
         .login-container button{
             margin-left: 35%;
@@ -198,7 +205,7 @@ block append head
             padding: 5px 5px;
             border: none;
             border-radius: 30px;
-            font-size: .9rem;
+            font-size: 1.5rem;
             margin-top: 8px;
             transition: .5s;
         }
@@ -212,6 +219,11 @@ block append head
             color: var(--white);
             padding: 10px;
             text-align:center;
+        }
+
+        .login-account{
+            align-items:center;
+            margin-left:50px;
         }
         .login-account a{
             display: block;
@@ -358,7 +370,7 @@ block content
                 i.fa-solid.fa-shield-cat.fa-flip
                 | SoundScape
             .nav-links
-                a(href='home') Home
+                a(href='/') Home
                 a(href='shows') Shows
                 a(href='hosts') Hosts
                 a(href='about') About
@@ -367,21 +379,22 @@ block content
                 i.fa-solid.fa-xmark
             i.fa-solid.fa-bars
 
-        .login-container
-            h2 Login
-            form(action="submit_login", method="post")
-                .input-group
-                    input.login-input(type="text", id="username", name="username", required, placeholder="Username")
-                .input-group
-                    input.login-input(type="password", id="password", name="password", required, placeholder="Password")
-                a.forgot-link(href="#")  Forgot Password?
-            
-                button(type="submit") Login
-                p Don't Have an Account?
-                .login-account
-                    a(href="signup-listener") Sign Up as a Listener
-                .login-account
-                    a(href="signup-host") Sign Up as Host
+        .login-page
+            .login-container
+                h2 Login
+                form(action="submit_login", method="post")
+                    .input-group
+                        input.login-input(type="text", id="username", name="username", required, placeholder="Username")
+                    .input-group
+                        input.login-input(type="password", id="password", name="password", required, placeholder="Password")
+                    a.forgot-link(href="#")  Forgot Password?
+                
+                    button.login-btn(type="submit") Login
+                    p Don't Have an Account?
+                    .login-account
+                        a(href="signup-listener") Sign Up as a Listener
+                    .login-account
+                        a(href="signup-host") Sign Up as Host
         footer
             section
                 .footer-logo
@@ -392,7 +405,7 @@ block content
             section
                 h2.footer-section-subheading Quick Links
                 .footer-links
-                    a(href='home') Home
+                    a(href='/') Home
                     a(href='shows') Shows
                     a(href='hosts') Hosts
                     a(href='about') About Us

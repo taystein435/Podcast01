@@ -213,7 +213,7 @@ block append head
       margin: 5px;
       font-size: 12px;
       border-radius: 10px;
-      width: 300px;
+      width: 330px;
       padding: 10px;
       line-height: 1.6;
     }
@@ -248,8 +248,17 @@ block append head
       height: 150px;
       padding-top: 10px;
     }
+
+    audio{
+      width: 150px; 
+      height:30px;
+      margin: 10px;
+    }
+
     /* Main shows ends here */
     /* Main categories starts here */
+
+    
     .main-categories h1 {
       padding: 10px;
       text-align: center; 
@@ -409,7 +418,7 @@ block content
       .logo
         i.fa-solid.fa-shield-cat.fa-flip SoundScape
       .nav-links
-        a(href="home") Home
+        a(href="/") Home
         a(href="shows") Shows
         a(href="hosts") Hosts
         a(href="about") About
@@ -435,12 +444,12 @@ block content
                         .show-list-text
                             h3 #{show.Title}
                             p #{show.Description} 
-                            a(href='#') Listen Now
+                            audio(src='https://cdn.freesound.org/previews/733/733899_12418982-lq.mp3', controls=true)
     main.main-categories
       h1 Categories
       .categories-container
         .categories-list
-          img(src="https://images.pexels.com/photos/6954162/pexels-photo-6954162.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="")
+          img(src="https://images.pexels.com/photos/6787440/pexels-photo-6787440.jpeg?auto=compress&cs=tinysrgb&w=600" alt="")
           .categories-list-text
             h3 Health & Fitness
             h5 Transform, thrive, rejuvenate.
@@ -452,7 +461,7 @@ block content
             h5 Empowering your journey towards unparalleled business success
             p The GaryVee Audio
         .categories-list
-          img(src="https://images.pexels.com/photos/6954162/pexels-photo-6954162.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="")
+          img(src="https://images.pexels.com/photos/1415810/pexels-photo-1415810.jpeg?auto=compress&cs=tinysrgb&w=600" alt="")
           .categories-list-text
             h3 Sport
             h5 Sport News
@@ -466,7 +475,7 @@ block content
       section
         h2.footer-section-subheading Quick Links
         .footer-links
-          a(href="home") Home
+          a(href="/") Home
           a(href="shows") Shows
           a(href="hosts") Hosts
           a(href="about") About Us
