@@ -1,25 +1,19 @@
 
 const express = require("express");
+const Listener  = require("../app/models/listeners");
+const Podcaster  = require("../app/models/podcasters");
+const Show  = require("../app/models/shows");
+const bcrypt = require("bcryptjs");
 const bodyParser = require('body-parser');
-// Create express app
-var app = express();
-
-// Add static files location
-app.use(express.static("static"));
-
-// Use the Pug templating engine
-app.set("view engine", "pug");
-app.set("views", "./app/views");
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-// Get the functions in the db.js file to use
-const db = require("./services/db");
-
-// Get the models
-const {  Listener } = require("../app/models.js/listeners");
-const { Podcaster } = require("../app/models.js/podcasters");
-const { Show } = require("../app/models.js/shows");
-
+const app = express();
+// Set the sessions
+var session = require('express-session');
+app.use(session({
+  secret: 'secretkeysdfjsflyoifasd',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false }
+}));
 
 // Create a route for root - /
 app.get("/index", function (req, res) {
