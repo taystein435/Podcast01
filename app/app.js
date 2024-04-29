@@ -179,12 +179,19 @@ app.post('/authenticate', async (req, res) => {
   
     try {
   
-     
+        // Fetch user by email
+        const user = await Listener.getUserByEmail(email);
+        uId = await user.getIdFromEmail();
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
   
+
     } catch (error) {
-  }
+        console.error("Error authenticating user:", error);
+        return res.status(500).json({ message: "Internal server error" });
+    }
   });
-  
   // Logout
   app.get('/logout', function (req, res) {
     req.session.destroy();
