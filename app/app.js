@@ -1,6 +1,6 @@
 
 const express = require("express");
-
+const bodyParser = require('body-parser');
 // Create express app
 var app = express();
 
@@ -10,7 +10,8 @@ app.use(express.static("static"));
 // Use the Pug templating engine
 app.set("view engine", "pug");
 app.set("views", "./app/views");
-
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 // Get the functions in the db.js file to use
 const db = require("./services/db");
 
