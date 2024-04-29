@@ -157,6 +157,25 @@ app.post('/add-show', async (req, res) => {
     }
   });
   
+  
+// Authentication route
+app.post('/authenticate', async (req, res) => {
+    const { email, password } = req.body;
+  
+    try {
+  
+     
+  
+    } catch (error) {
+  }
+  });
+  
+  // Logout
+  app.get('/logout', function (req, res) {
+    req.session.destroy();
+    res.redirect('/login');
+  });
+  
 // Start server on port 3000
 app.listen(3000, function () {
   console.log(`Server running at http://127.0.0.1:3000/`);
