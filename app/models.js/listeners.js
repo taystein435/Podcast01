@@ -1,33 +1,45 @@
-const db = require('./../services/db');
+const db = require('../services/db');
+const bcrypt = require('bcryptjs');
 
 class Listener {
-    id;
-    name;
-    email;
-    signupDate;
-
-    constructor(id) {
-        this.id = id;
+    constructor(name, email, password) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
     }
-    
-    async getListenerDetails() {
-        if (!this.name) {
-            const sql = "SELECT * FROM Listeners WHERE ListenerId = ?";
-            const result = await db.query(sql, [this.id]);
-            if (result.length > 0) {
-                const listener = result[0];
-                this.name = listener.Name;
-                this.email = listener.Email;
-                this.signupDate = listener.SignupDate;
-            }
+
+    async addUser() {
+        try {
+
+        } catch (error) {
+        
         }
+    }
+
+    static async getUserByEmail(email) {
+        try {
+
+        } catch (error) {
+
+        }
+    }
+
+    async authenticate(submittedPassword) {
+        try {
+
+        } catch (error) {
+            
+        }
+    }
+  async getIdFromEmail() {
+    try {
+ 
+    } catch (error) {
+        
     }
 }
 
 
+}
 
-
-module.exports = {
-    Listener,
-    
-};
+module.exports = Listener;
