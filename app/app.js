@@ -26,7 +26,7 @@ app.get("/", function (req, res) {
     if (req.session.loggedIn) {
         var sql = "SELECT * FROM Shows";
         db.query(sql).then((results) => {
-            res.render("home", { data: results, });
+            res.render("home", { data: results, message: Welcome, ${req.session.uid}! });
         });
     } else {
         // If not logged in, render the home page without a welcome message
