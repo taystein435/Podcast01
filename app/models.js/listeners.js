@@ -29,21 +29,31 @@ class Listener {
         }
     }
 
+
     async authenticate(submittedPassword) {
         try {
-
+            // Compare submitted password with stored hashed password
+            const match = await bcrypt.compare(submittedPassword, this.password);
+            return match;
         } catch (error) {
-            
+            throw new Error("Error authenticating user");
         }
     }
   async getIdFromEmail() {
     try {
- 
+        // Check if the submitted email exists in the database
+        const sql = "SELECT  Name FROM Listeners WHERE Email = ?";
+        const result = await db.query(sql, [this.email]);
+        if (result.length > 0) {
+            this.id = result[0].Name;
+            return this.id;
+        } else {
+            return null;
+        }
     } catch (error) {
-        
+        throw new Error("Error retrieving user ID from database: " + error.message);
     }
 }
-
 
 }
 
