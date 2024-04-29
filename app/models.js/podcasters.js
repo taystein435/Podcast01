@@ -1,39 +1,17 @@
-const db = require('./../services/db');
+
+const db = require('../services/db');
+const bcrypt = require('bcryptjs');
 
 class Podcaster {
-    id;
-    name;
-    email;
-    bio;
-    password;
-    gender;
-    shows;
+    constructor(name, email, password, bio, gender,show) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.bio = bio;
+        this.gender = gender;
+        this.show = show;
+    }
 
-    constructor(id) {
-        this.id = id;
-    }
-    
-    async getPodcasterDetails() {
-        if (!this.name) {
-            const sql = "SELECT * FROM Podcasters WHERE Userid = ?";
-            const result = await db.query(sql, [this.id]);
-            if (result.length > 0) {
-                const podcaster = result[0];
-                this.name = podcaster.Name;
-                this.email = podcaster.Email;
-                this.bio = podcaster.Bio;
-                this.password = podcaster.Password;
-                this.gender = podcaster.Gender;
-                this.shows = podcaster.Shows;
-            }
-        }
-    }
 }
 
-
-
-
-module.exports = {
-    Podcaster,
-    
-};
+module.exports = Podcaster;
