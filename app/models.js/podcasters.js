@@ -1,39 +1,38 @@
-const db = require('./../services/db');
+
+const db = require('../services/db');
+const bcrypt = require('bcryptjs');
 
 class Podcaster {
-    id;
-    name;
-    email;
-    bio;
-    password;
-    gender;
-    shows;
+    constructor(name, email, password, bio, gender,show) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.bio = bio;
+        this.gender = gender;
+        this.show = show;
+    }
 
-    constructor(id) {
-        this.id = id;
+    async addUser() {
+        try {
+            const hashedPassword = await bcrypt.hash(this.password, 10);
+            const sql = "INSERT INTO Podcasters (Name, Email, Password, Bio, Gender, Shows) VALUES (?, ?, ?, ?, ?, ?)";
+            console.log("Executing SQL query:", sql);
+            await db.query(sql, [this.name, this.email, hashedPassword, this.bio, this.gender, this.show]);
+        } catch (error) {
+            console.error("Error adding user to database:", error);
+            throw new Error("Error adding user to database");
+        }
     }
     
-    async getPodcasterDetails() {
-        if (!this.name) {
-            const sql = "SELECT * FROM Podcasters WHERE Userid = ?";
-            const result = await db.query(sql, [this.id]);
-            if (result.length > 0) {
-                const podcaster = result[0];
-                this.name = podcaster.Name;
-                this.email = podcaster.Email;
-                this.bio = podcaster.Bio;
-                this.password = podcaster.Password;
-                this.gender = podcaster.Gender;
-                this.shows = podcaster.Shows;
-            }
+    static async getUserByEmail(email) {
+        try {
+            const sql = "SELECT * FROM Podcasters WHERE Email = ?";
+            const result = await db.query(sql, [email]);
+            return result.length > 0 ? result[0] : null;
+        } catch (error) {
+            throw new Error("Error retrieving user from database");
         }
     }
 }
 
-
-
-
-module.exports = {
-    Podcaster,
-    
-};
+module.exports = Podcaster;

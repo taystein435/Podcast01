@@ -127,14 +127,27 @@ app.get("/host-addShow", function (req, res) {
 });
 
 
+// Route to handle form submission
 app.post('/submit-listener', async (req, res) => {
     try {
         const { name, email, password } = req.body;
   
-
-    
-        res.redirect('/');
-      
+        // Check if the email already exists in the database
+        const existingUser = await db.query("SELECT * FROM Listeners WHERE Email = ?", [email]);
+        if (existingUser.length > 0) {
+            return res.status(400).json({ message: "Email already exists" });
+        }
+  
+        // Create a new Listener instance
+        const newListener = new Listener(name, email, password);
+  
+        // Add the user to the database
+        await newListener.addUser();
+  
+        res.redirect('/'); // Redirect to login page after successful signup
+    } catch (error) {
+        console.error("Error in signup:", error);
+        res.status(500).json({ message: "Internal server error" });
     }
   });
   
