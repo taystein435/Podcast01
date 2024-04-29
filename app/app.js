@@ -1,25 +1,19 @@
 
 const express = require("express");
+const Listener  = require("../app/models/listeners");
+const Podcaster  = require("../app/models/podcasters");
+const Show  = require("../app/models/shows");
+const bcrypt = require("bcryptjs");
 const bodyParser = require('body-parser');
-// Create express app
-var app = express();
-
-// Add static files location
-app.use(express.static("static"));
-
-// Use the Pug templating engine
-app.set("view engine", "pug");
-app.set("views", "./app/views");
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-// Get the functions in the db.js file to use
-const db = require("./services/db");
-
-// Get the models
-const {  Listener } = require("../app/models.js/listeners");
-const { Podcaster } = require("../app/models.js/podcasters");
-const { Show } = require("../app/models.js/shows");
-
+const app = express();
+// Set the sessions
+var session = require('express-session');
+app.use(session({
+  secret: 'secretkeysdfjsflyoifasd',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false }
+}));
 
 // Create a route for root - /
 app.get("/index", function (req, res) {
@@ -160,13 +154,21 @@ app.post('/submit-listener', async (req, res) => {
        
     }
   });
-  
 // POST route to add a new show
 app.post('/add-show', async (req, res) => {
     try {
-     
+        const { title, description, category, coverImageUrl, releaseDate, podcasterId } = req.body;
+  
+        // Create a new Show instance
+        const newShow = new Show(title, description, category, coverImageUrl, releaseDate, podcasterId);
+  
+        // Add the show to the database
+        await newShow.addShow();
+  
+        res.status(201).json({ message: "Show added successfully" });
     } catch (error) {
-
+        console.error("Error adding show:", error);
+        res.status(500).json({ message: "Internal server error" });
     }
   });
   
@@ -177,12 +179,29 @@ app.post('/authenticate', async (req, res) => {
   
     try {
   
-     
+        // Fetch user by email
+        const user = await Listener.getUserByEmail(email);
+        uId = await user.getIdFromEmail();
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
   
+        // Authenticate user
+        const isAuthenticated = await user.authenticate(password);
+  
+        if (!isAuthenticated) {
+            return res.status(401).json({ message: "Invalid email or password" });
+        }
+   // Set session variables
+        req.session.uid = uId;// Assuming Listener model has an 'id' property
+        req.session.loggedIn = true;
+              // Authentication successful
+        return res.redirect('/'); 
     } catch (error) {
-  }
+        console.error("Error authenticating user:", error);
+        return res.status(500).json({ message: "Internal server error" });
+    }
   });
-  
   // Logout
   app.get('/logout', function (req, res) {
     req.session.destroy();
