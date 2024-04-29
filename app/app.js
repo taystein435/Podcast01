@@ -127,7 +127,18 @@ app.get("/host-addShow", function (req, res) {
 });
 
 
-
+app.post('/submit-listener', async (req, res) => {
+    try {
+        const { name, email, password } = req.body;
+  
+        // Check if the email already exists in the database
+    
+        res.redirect('/'); // Redirect to login page after successful signup
+    } catch (error) {
+      
+    }
+  });
+  
 
 // Start server on port 3000
 app.listen(3000, function () {
