@@ -154,16 +154,19 @@ block append head
             }
         }
 
-
+        .main-categories{
+            margin-bottom:50px;
+        }
         .main-categories h1 {
 
-            padding: 10px;
+            padding: 50px;
             text-align: center; 
+            
         }
         .categories-container {
             display: flex;
             justify-content: center;
-            width: auto;
+            align-items:center;
             flex-wrap: wrap;
         }
         .categories-list {
@@ -171,15 +174,16 @@ block append head
             color: var(--white);
             margin: 5px;
             border-radius: 10px;
-            width: 180px;
+            width: 300px;
+            height:300px;
             padding: 10px;
             line-height: 1.6;
             position: relative;
         }
-        .categories-container .categories-list img {
+        .categories-list img {
 
-            width: 150px;
-            height: 100px;
+            width: 250px;
+            height: 150px;
         
         }
         .categories-list-text p {
@@ -309,7 +313,7 @@ block content
                 i.fa-solid.fa-shield-cat.fa-flip
                 | SoundScape
             .nav-links
-                a(href='home') Home
+                a(href='/') Home
                 a(href='shows') Shows
                 a(href='hosts') Hosts
                 a(href='about') About
@@ -319,26 +323,25 @@ block content
             i.fa-solid.fa-bars
 
         main.main-categories
-            h1 Categories
+            h1 Hosts on SoundScape Podcast
             .categories-container
                 .categories-list
-                img(src="https://images.pexels.com/photos/6954162/pexels-photo-6954162.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="")
-                .categories-list-text
-                    h3 Health & Fitness
-                    h5 Transform, thrive, rejuvenate.
-                    p Michael Mosley
+                    img(src="https://images.pexels.com/photos/6954162/pexels-photo-6954162.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="")
+                    .categories-list-text
+                        h3 Michael Mosley 
+                        p Health & Fitness
                 .categories-list
-                img(src="https://images.pexels.com/photos/6954162/pexels-photo-6954162.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="")
-                .categories-list-text
-                    h3 Business
-                    h5 Empowering your journey towards unparalleled business success
-                    p The GaryVee Audio
+                    img(src="https://images.pexels.com/photos/6954162/pexels-photo-6954162.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="")
+                    .categories-list-text
+                        h3  The GaryVee Audio
+                        
+                        p Business
                 .categories-list
-                img(src="https://images.pexels.com/photos/6954162/pexels-photo-6954162.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="")
-                .categories-list-text
-                    h3 Sport
-                    h5 Sport News
-                    p Gabby Logan and Mark Chapman            
+                    img(src="https://images.pexels.com/photos/6954162/pexels-photo-6954162.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="")
+                    .categories-list-text
+                        h3 Gabby Logan and Mark Chapman 
+                       
+                        p  Sport          
 
         footer
             section
@@ -350,7 +353,7 @@ block content
             section
                 h2.footer-section-subheading Quick Links
                 .footer-links
-                    a(href='index') Home
+                    a(href='/') Home
                     a(href='shows') Shows
                     a(href='hosts') Hosts
                     a(href='about') About Us

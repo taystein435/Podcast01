@@ -183,15 +183,15 @@ block append head
         }
 
         a button {
-            margin-left: 45%;
-            width: 90px;
+            margin-left: 30%;
+            width: 110px;
             display:block;
             background-color: var(--purple);
             color: var(--white);
             padding: 5px 5px;
             border: none;
             border-radius: 30px;
-            font-size: .9rem;
+            font-size: 1.5rem;
             margin-top: -160px;
             transition: .5s;
             margin-bottom:110px;
@@ -204,22 +204,31 @@ block append head
 
 
         /* Media Queries for Responsive */
-        @media (max-width: 768px) {
+        @media screen and (max-width: 768px) {
             .signup-container {
                 margin: 50px auto; 
                 width: 80%; 
             }
+
+            .signup-container button {
+                margin-left: 10%; /* Adjusted margin for smaller screens */
+                font-size: 1.2rem; /* Adjusted font size for smaller screens */
+                padding: 8px 16px; /* Adjusted padding for smaller screens */
+                margin-top: -120px; /* Adjusted margin-top for smaller screens */
+                margin-bottom: 30px;
+            }
         }
 
-        @media (max-width: 480px) {
+        @media screen and (max-width: 480px) {
             .signup-container {
                 margin: 20px auto;
                 width: 95%; 
             }
 
             .signup-container button {
-                width: auto; 
-                padding: 5px 30px; 
+                width: auto;
+                margin-left: 30%; 
+                //- padding: 5px 30px; 
             }
         }
 
@@ -331,7 +340,7 @@ block content
                 i.fa-solid.fa-shield-cat.fa-flip
                 | SoundScape
             .nav-links
-                a(href='home') Home
+                a(href='/') Home
                 a(href='shows') Shows
                 a(href='hosts') Hosts
                 a(href='about') About
@@ -368,7 +377,7 @@ block content
             section
                 h2.footer-section-subheading Quick Links
                 .footer-links
-                    a(href='home') Home
+                    a(href='/') Home
                     a(href='shows') Shows
                     a(href='hosts') Hosts
                     a(href='about') About Us
