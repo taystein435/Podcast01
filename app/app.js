@@ -160,13 +160,21 @@ app.post('/submit-listener', async (req, res) => {
        
     }
   });
-  
 // POST route to add a new show
 app.post('/add-show', async (req, res) => {
     try {
-     
+        const { title, description, category, coverImageUrl, releaseDate, podcasterId } = req.body;
+  
+        // Create a new Show instance
+        const newShow = new Show(title, description, category, coverImageUrl, releaseDate, podcasterId);
+  
+        // Add the show to the database
+        await newShow.addShow();
+  
+        res.status(201).json({ message: "Show added successfully" });
     } catch (error) {
-
+        console.error("Error adding show:", error);
+        res.status(500).json({ message: "Internal server error" });
     }
   });
   
