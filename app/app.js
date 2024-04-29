@@ -1,6 +1,6 @@
 
 const express = require("express");
-
+const bodyParser = require('body-parser');
 // Create express app
 var app = express();
 
@@ -10,7 +10,8 @@ app.use(express.static("static"));
 // Use the Pug templating engine
 app.set("view engine", "pug");
 app.set("views", "./app/views");
-
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 // Get the functions in the db.js file to use
 const db = require("./services/db");
 
@@ -125,24 +126,56 @@ app.get("/host-addShow", function (req, res) {
     });
 });
 
-// Create a route for testing the db
-app.get("/db_test", function(req, res) {
-    // Assumes a table called test_table exists in your database
-    sql = 'select * from test_table';
-    db.query(sql).then(results => {
-        console.log(results);
-        res.send(results)
-    });
-});
 
-// Create a route for /goodbye
-// Responds to a 'GET' request
-app.get("/goodbye", function(req, res) {
-    res.send("Goodbye world!");
-});
+app.post('/submit-listener', async (req, res) => {
+    try {
+        const { name, email, password } = req.body;
+  
 
+    
+        res.redirect('/');
+      
+    }
+  });
+  
+  app.post('/submit-podcaster', async (req, res) => {
+    try {
 
+        }
 
+     catch (error) {
+       
+    }
+  });
+  
+// POST route to add a new show
+app.post('/add-show', async (req, res) => {
+    try {
+     
+    } catch (error) {
+
+    }
+  });
+  
+  
+// Authentication route
+app.post('/authenticate', async (req, res) => {
+    const { email, password } = req.body;
+  
+    try {
+  
+     
+  
+    } catch (error) {
+  }
+  });
+  
+  // Logout
+  app.get('/logout', function (req, res) {
+    req.session.destroy();
+    res.redirect('/login');
+  });
+  
 // Start server on port 3000
 app.listen(3000, function () {
   console.log(`Server running at http://127.0.0.1:3000/`);
