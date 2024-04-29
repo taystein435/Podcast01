@@ -24,7 +24,15 @@ class Podcaster {
         }
     }
     
-
+    static async getUserByEmail(email) {
+        try {
+            const sql = "SELECT * FROM Podcasters WHERE Email = ?";
+            const result = await db.query(sql, [email]);
+            return result.length > 0 ? result[0] : null;
+        } catch (error) {
+            throw new Error("Error retrieving user from database");
+        }
+    }
 }
 
 module.exports = Podcaster;
