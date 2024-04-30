@@ -1,4 +1,8 @@
+<<<<<<< HEAD
     CREATE TABLE Podcasters (
+=======
+CREATE TABLE Podcasters (
+>>>>>>> b7a1ffe338fa41d980698ef8c1da48098ed3cbc0
     Userid INT AUTO_INCREMENT PRIMARY KEY,
     Name VARCHAR(255) NOT NULL,
     Email VARCHAR(255) NOT NULL UNIQUE,
@@ -127,5 +131,8 @@ INSERT INTO Subscriptions VALUES(7, 7, 1, '2023-03-10');
 INSERT INTO Subscriptions VALUES(8, 8, 2, '2023-03-11');
 INSERT INTO Subscriptions VALUES(9, 9, 3, '2023-03-12');
 INSERT INTO Subscriptions VALUES(10, 10, 1, '2023-03-13');
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> b7a1ffe338fa41d980698ef8c1da48098ed3cbc0

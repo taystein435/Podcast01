@@ -14,6 +14,7 @@ app.use(session({
   cookie: { secure: false }
 }));
 
+<<<<<<< HEAD
 app.use(express.static("static"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -39,6 +40,24 @@ app.get("/", function (req, res) {
       });
   }
 });
+=======
+app.get("/", function (req, res) {
+    // Check if user is logged in
+    if (req.session.loggedIn) {
+        var sql = "SELECT * FROM Shows";
+        db.query(sql).then((results) => {
+            res.render("home", { data: results, message: Welcome, ${req.session.uid}! });
+        });
+    } else {
+        // If not logged in, render the home page without a welcome message
+        var sql = "SELECT * FROM Shows";
+        db.query(sql).then((results) => {
+            res.render("home", { data: results, message: null }); // Passing null as the message
+        });
+    }
+  });
+v  
+>>>>>>> b7a1ffe338fa41d980698ef8c1da48098ed3cbc0
 
 
 // Create a route for Single show
@@ -107,6 +126,7 @@ app.get("/signup-host", function (req, res) {
   });
 });
 
+<<<<<<< HEAD
 // Route to handle form submission
 app.post('/submit-listener', async (req, res) => {
   try {
@@ -226,7 +246,96 @@ app.get('/logout', function (req, res) {
   req.session.destroy();
   res.redirect('/login');
 });
+=======
 
+// Route to handle form submission
+app.post('/submit-listener', async (req, res) => {
+    try {
+        const { name, email, password } = req.body;
+  
+        // Check if the email already exists in the database
+        const existingUser = await db.query("SELECT * FROM Listeners WHERE Email = ?", [email]);
+        if (existingUser.length > 0) {
+            return res.status(400).json({ message: "Email already exists" });
+        }
+  
+        // Create a new Listener instance
+        const newListener = new Listener(name, email, password);
+  
+        // Add the user to the database
+        await newListener.addUser();
+  
+        res.redirect('/'); // Redirect to login page after successful signup
+    } catch (error) {
+        console.error("Error in signup:", error);
+        res.status(500).json({ message: "Internal server error" });
+    }
+  });
+  
+  app.post('/submit-podcaster', async (req, res) => {
+    try {
+
+        }
+>>>>>>> b7a1ffe338fa41d980698ef8c1da48098ed3cbc0
+
+     catch (error) {
+       
+    }
+  });
+// POST route to add a new show
+app.post('/add-show', async (req, res) => {
+    try {
+        const { title, description, category, coverImageUrl, releaseDate, podcasterId } = req.body;
+  
+        // Create a new Show instance
+        const newShow = new Show(title, description, category, coverImageUrl, releaseDate, podcasterId);
+  
+        // Add the show to the database
+        await newShow.addShow();
+  
+        res.status(201).json({ message: "Show added successfully" });
+    } catch (error) {
+        console.error("Error adding show:", error);
+        res.status(500).json({ message: "Internal server error" });
+    }
+  });
+  
+  
+// Authentication route
+app.post('/authenticate', async (req, res) => {
+    const { email, password } = req.body;
+  
+    try {
+  
+        // Fetch user by email
+        const user = await Listener.getUserByEmail(email);
+        uId = await user.getIdFromEmail();
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+  
+        // Authenticate user
+        const isAuthenticated = await user.authenticate(password);
+  
+        if (!isAuthenticated) {
+            return res.status(401).json({ message: "Invalid email or password" });
+        }
+   // Set session variables
+        req.session.uid = uId;// Assuming Listener model has an 'id' property
+        req.session.loggedIn = true;
+              // Authentication successful
+        return res.redirect('/'); 
+    } catch (error) {
+        console.error("Error authenticating user:", error);
+        return res.status(500).json({ message: "Internal server error" });
+    }
+  });
+  // Logout
+  app.get('/logout', function (req, res) {
+    req.session.destroy();
+    res.redirect('/login');
+  });
+  
 // Start server on port 3000
 app.listen(3000, function () {
   console.log(`Server running at http://127.0.0.1:3000/`);

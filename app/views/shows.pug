@@ -262,12 +262,19 @@ block append head
             background-position: center;
             background-image: url(https://images.pexels.com/photos/16773547/pexels-photo-16773547/free-photo-of-youtube-music-stream-songs-and-music-videos-app-on-the-display-of-smartphone-or-tablet.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
             margin-bottom: 30px;
+             
         }
 
+        .header-text{
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            text-align: center;
+           
+        }
         .header-text h1{
             color: var(--white);
             width: 900px;
-            margin: 0px 0px 50px 40px;
             line-height: 1.9;
             padding: 50px;
         }
@@ -280,13 +287,17 @@ block append head
             text-align: center; 
             
         }
+        audio{
+            width: 150px; 
+            height:30px;
+            margin: 10px;
+        }
         
         .shows-container{
             display: grid;
-            grid-template-columns: 300px 300px;
+            grid-template-columns: 400px 400px;
             justify-content: center;
-            gap: 20px;
-            width: auto;
+            gap: 10px;
             flex-wrap: wrap;
             
         }
@@ -298,7 +309,7 @@ block append head
             gap: 10px;
             margin: 5px;
             border-radius: 10px;
-            width: 300px;
+            width: 330px;
             padding: 10px;
             line-height: 1.6;
             
@@ -341,7 +352,11 @@ block append head
         }
 
 
-        @media (max-width: 600px) {
+        @media screen and (max-width: 768px) {
+            header{
+                height: calc(50vh - 80px);
+            }
+
             .shows-container {
                 font-size: 14px;
                 grid-template-columns: 1fr; /* Only one column on smaller screens */
@@ -349,13 +364,14 @@ block append head
 
             .shows-list {
                 flex-direction: column; 
-                margin-left: 50px;
+                margin-left: 100px;
             }
 
-            .shows-container .shows-list img {
+            .shows-list img {
                 width: 100%; /* Full width of the container */
                 height: auto; /* Maintain aspect ratio */
             }
+
         }
                 
 block content
@@ -388,7 +404,7 @@ block content
                         .show-list-text
                             h3 #{show.Title}
                             p #{show.Description} 
-                            a(href='#') Listen Now
+                            audio(src='https://cdn.freesound.org/previews/733/733899_12418982-lq.mp3', controls=true)
         footer
             section
                 .footer-logo
