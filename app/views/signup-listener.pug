@@ -330,7 +330,7 @@ block content
                 i.fa-solid.fa-shield-cat.fa-flip
                 | SoundScape
             .nav-links
-                a(href='home') Home
+                a(href='/') Home
                 a(href='shows') Shows
                 a(href='hosts') Hosts
                 a(href='about') About
@@ -339,22 +339,16 @@ block content
                 i.fa-solid.fa-xmark
             i.fa-solid.fa-bars
 
-        form(action="", method="post", name="form1")
+        form(action='/submit-listener' method='POST')
             .signup-container
                 h2 Sign Up
                 .div1
-                    input(type="text", class="fname", id="fname", name="fname", placeholder="First Name", onblur="myfirstname()")
-                .div1
-                    input(type="text", name="lname", id="lname", placeholder="Last Name", onblur="mylastname()")
+                    input(type="text", class="fname", id="fname", name="name", placeholder="Name")
                 .div1
                     input(onblur="email_check()", type="email", name="email", id="email", placeholder="Email")
                 .div1
-                    input(type="number", name="number", id="number", placeholder="Phone Number", onblur="phone_number()")
-                .div1
                     input(onblur="val_password()", type="password", name="password", id="password", placeholder="Password")
-                .div1
-                    input(type="text", name="confirmpassword", placeholder="Confirm Password")
-                button(type="submit") Sign Up
+                    input(type='submit' value='Submit')
         footer
             section
                 .footer-logo
@@ -365,7 +359,7 @@ block content
             section
                 h2.footer-section-subheading Quick Links
                 .footer-links
-                    a(href='home') Home
+                    a(href='/') Home
                     a(href='shows') Shows
                     a(href='hosts') Hosts
                     a(href='about') About Us
